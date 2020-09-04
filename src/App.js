@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import ReactiveBaseClass from './containers/reactivebase';
+import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {ReactiveBase, DataSearch, ReactiveList} from "@appbaseio/reactivesearch";
+import {Card} from 'react-bootstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const { ResultListWrapper } = ReactiveList;
+
+class App extends Component {
+  
+  // customQuery=function() {
+  //   return {
+  //     "query": {
+  //       "match": {
+  //         "author": "Niem Chheng"
+  //       }
+  //     }
+  //   }
+  // }
+
+  render() {
+    return (
+      <div className="container-fluid">
+      <ReactiveBase
+          app="search-article-test"
+          credentials="Tip72NH54:e828e97e-9c9f-48c6-bae2-34500048d090"
+          url="https://scalr.api.appbase.io">
+      
+      {/* <DataSearch
+      componentId="customQuery"
+      dataField ={'author'} 
+      customQuery={this.customQuery}
+      /> */}
+    
+      { <ReactiveBaseClass /> }
+      </ReactiveBase>
+      </div>
+    );
+  }
 }
+
 
 export default App;
